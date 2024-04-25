@@ -42,7 +42,7 @@ public class CriarUsuarioRequestHandler
         {
             _logger.LogError("Ocorreu um erro durante a execução");
             return Result.Error<CriarUsuarioResponse>(new Compartilhado.Excecoes.ExcecaoAplicacao(
-                (ContaMensagemErrors.ErroGravacaoUsuario)));
+                (ContaMensagemErrors.Generico)));
         }
     }
 }

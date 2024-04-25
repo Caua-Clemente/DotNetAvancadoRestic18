@@ -1,6 +1,8 @@
 ﻿using Cepedi.Banco.Conta.Compartilhado;
 using Cepedi.Banco.Conta.Dominio.Entidades;
 using Cepedi.Banco.Conta.Dominio.Repositorio;
+using Cepedi.Banco.Conta.Dominio.Servicos;
+
 using MediatR;
 using Microsoft.Extensions.Logging;
 using OperationResult;
@@ -19,6 +21,9 @@ public class CriarContaRequestHandler : IRequestHandler<CriarContaRequest, Resul
     }
     public Task<Result<CriarContaResponse>> Handle(CriarContaRequest request, CancellationToken cancellationToken)
     {
+
+        RabbitMQProducer.EnviarMensagem();
+
         var conta = new ContaEntity()
         {
             IdPessoa = request.IdPessoa,
